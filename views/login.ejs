@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="elegant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="min-h-screen bg-base-200 flex items-center justify-center">
+    <main class="w-full max-w-md px-4">
+        <div class="bg-base-100 p-8 rounded-xl shadow-2xl">
+            <h1 class="text-3xl font-serif brand text-center mb-4">Masuk ke Fragrance Haven</h1>
+            <p class="text-sm text-center mb-6">Masukkan username dan password Anda untuk melanjutkan.</p>
+
+            <form action="/login" method="POST" class="space-y-4">
+                <div>
+                    <label class="label">Username</label>
+                    <input type="text" id="username" name="username" required class="input input-bordered w-full" />
+                </div>
+                <div>
+                    <label class="label">Password</label>
+                    <input type="password" id="password" name="password" required class="input input-bordered w-full" />
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary w-full">Login</button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center">
+                <p class="mb-2 text-sm">Belum punya akun?</p>
+                <a href="/register" class="btn btn-ghost">Daftar Sekarang</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

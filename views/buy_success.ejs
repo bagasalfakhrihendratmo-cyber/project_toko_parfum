@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="elegant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="min-h-screen bg-base-200 flex items-center justify-center">
+    <main class="w-full max-w-md px-4">
+        <div class="bg-base-100 p-8 rounded-xl shadow-2xl text-center">
+            <h1 class="text-2xl font-serif mb-4">Pesanan Diterima</h1>
+            <p class="mb-4">Terima kasih, <strong><%= user.username %></strong>. Pesanan Anda telah diterima.</p>
+            <div class="text-left mb-4">
+                <p><strong>Produk:</strong> <%= perfume.name %></p>
+                <p><strong>Jumlah:</strong> <%= quantity %></p>
+                <p><strong>Alamat:</strong> <%= address %></p>
+                <p><strong>Metode Pembayaran:</strong> <%= payment %></p>
+                <p class="mt-4">Total pembayaran: <strong>Rp <%= perfume.price * quantity %></strong></p>
+            </div>
+            <a href="/home" class="btn btn-primary">Kembali ke Beranda</a>
+        </div>
+    </main>
+</body>
+</html>

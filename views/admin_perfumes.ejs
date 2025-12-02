@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="elegant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Perfumes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <main class="container mx-auto px-6 py-12">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-serif brand">Admin - Manage Perfumes</h1>
+            <a href="/create-perfume" class="btn btn-primary">Add New Perfume</a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="table w-full">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% perfumes.forEach(perfume => { %>
+                        <tr>
+                            <td><%= perfume.id %></td>
+                            <td><%= perfume.name %></td>
+                            <td class="max-w-md truncate"><%= perfume.description %></td>
+                            <td>Rp <%= perfume.price %></td>
+                            <% const thumb = perfume.image && perfume.image.trim() !== '' ? perfume.image : '/assets/product-placeholder.svg'; %>
+                            <td><img src="<%= thumb %>" alt="<%= perfume.name %>" loading="lazy" class="w-16 h-12 object-cover rounded"></td>
+                            <td>
+                                <a href="/update-perfume/<%= perfume.id %>" class="btn btn-ghost btn-sm">Edit</a>
+                                <form action="/delete-perfume/<%= perfume.id %>" method="POST" style="display:inline;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="elegant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parfum Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body>
+
+    <%- include('./partials/navbar.ejs') %>
+    <div
+        class="hero min-h-screen"
+        style="background-image: url('/assets/hero.svg');"
+    >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-neutral-content text-center">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Discover Your Signature Scent</h1>
+                <p class="mb-5">
+                    Explore our exquisite collection of fragrances and find the perfect perfume that defines you.
+                </p>
+                <a href="/perfume" class="btn btn-primary">Shop Now</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-4xl font-serif brand">Daftar Parfum</h1>
+            <% if (user && user.role === 'admin') { %>
+                <a href="/create-perfume" class="btn btn-primary">Tambah Parfum</a>
+            <% } %>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% if (typeof perfumes !== 'undefined' && perfumes.length > 0) { %>
+                <% perfumes.forEach(perfume => {  %>
+                    <% const imgUrl = perfume.image && perfume.image.trim() !== '' ? perfume.image : '/assets/no-image.svg'; %>
+                    <article class="card bg-base-100 shadow-sm">
+                        <figure>
+                            <img src="<%= imgUrl %>" alt="<%= perfume.name %>" loading="lazy" class="w-full h-40 object-cover rounded-t-md" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title font-serif"><%= perfume.name %></h2>
+                            <p class="text-sm text-muted"><%= perfume.description %></p>
+                            <p class="text-sm">Stok: <strong><%= (typeof perfume.stock !== 'undefined' ? perfume.stock : '0') %></strong></p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="font-bold">Rp <%= perfume.price %></span>
+                                <div class="flex gap-2">
+                                    <% if (user && user.role === 'admin') { %>
+                                        <a href="/update-perfume/<%= perfume.id %>" class="btn btn-ghost">Edit</a>
+                                        <form action="/delete-perfume/<%= perfume.id %>" method="POST" style="display:inline;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                        </form>
+                                    <% } else { %>
+                                        <% const avail = typeof perfume.stock !== 'undefined' ? perfume.stock : 0; %>
+                                        <% if (avail > 0) { %>
+                                            <a href="/buy/<%= perfume.id %>" class="btn btn-primary">Buy</a>
+                                        <% } else { %>
+                                            <button class="btn btn-disabled">Out of stock</button>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                <% }); %>
+            <% } else { %>
+                <p>No perfumes available at the moment.</p>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+
+</body>
+</html>

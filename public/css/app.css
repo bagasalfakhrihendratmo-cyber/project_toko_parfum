@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+	--brand-gold: #bfa06e;
+	--brand-dark: #0b0f1a;
+}
+
+/* Global typography */
+body {
+	font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	color: var(--brand-dark);
+	background-color: var(--tw-color-base-100, #fbfbfb);
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Playfair Display', serif;
+	color: var(--brand-dark);
+}
+
+.brand {
+	font-family: 'Playfair Display', serif;
+	color: var(--brand-gold);
+	letter-spacing: 0.4px;
+}
+
+.hero-overlay {
+	background: linear-gradient(180deg, rgba(11,15,26,0.55), rgba(11,15,26,0.55));
+}
+
+.btn-primary {
+	background: linear-gradient(90deg, var(--brand-gold), #8b6e3d);
+	color: var(--brand-dark);
+	font-weight: 600;
+	box-shadow: 0 6px 25px rgba(11,15,26,0.12);
+}
+
+.btn-primary:hover {
+	filter: brightness(1.04);
+}
+
+.card {
+	border-radius: 0.75rem;
+}
+
+/* Elegant footer adjustments */
+.footer .fill-current { fill: currentColor; }

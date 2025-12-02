@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960">
+  <rect width="100%" height="100%" fill="#fff8f0"/>
+  <g transform="translate(40,40)">
+    <rect width="520" height="640" rx="14" fill="#f6efe6" stroke="#e5d6bb" />
+    <circle cx="380" cy="320" r="140" fill="#bfa06e" opacity="0.06" />
+    <text x="40" y="80" font-family="Playfair Display, serif" font-size="28" fill="#0b0f1a">Signature Bottle</text>
+    <text x="40" y="120" font-family="Inter, sans-serif" font-size="14" fill="#3b3b3b">Elegant packaging — scent that lingers</text>
+  </g>
+</svg>

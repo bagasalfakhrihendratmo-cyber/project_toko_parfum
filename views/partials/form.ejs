@@ -1,0 +1,27 @@
+<div class="hero bg-base-200 min-h-screen">
+    <div class="hero-content flex-col lg:gap-12 lg:flex-row-reverse">
+        <div class="text-center lg:text-left">
+            <h1
+                class="text-5xl font-black bg-linear-to-r from-sky-400 via-sky-600 to-cyan-500 bg-clip-text text-transparent">
+                <%=title %>  Produk Sekarang !</h1>
+            <p class="py-6">
+                Buat produk harga tokomu-menarik
+            </p>
+        </div>
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl shadow-sky-400/80">
+            <div class="card-body">
+                <form action="/create-product" method="POST">
+                    <fieldset class="fieldset">
+                        <label class="label">Nama Product</label>
+                        <input type="text" class="input" placeholder="Masukan Nama Produk ex/Chiki Chuba" name="name" />
+                        <label class="label">Harga Product</label>
+                        <input type="number" class="input" placeholder="2500" name="harga" />
+                        <label class="label">Stok Product</label>
+                        <input type="number" class="input" placeholder="50" name="stock" />
+                        <button class="btn btn-neutral mt-4" type="submit">Buat</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
